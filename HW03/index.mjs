@@ -44,8 +44,8 @@ async function main() {
             await Promise.all(batch);
             console.log(`Batch ${batchNumber + 1} completed`);
         } catch (error) {
-            console.log(`Batch ${batchNumber + 1} failed`);
-            console.log(error);
+            console.error(`Batch ${batchNumber + 1} failed`);
+            console.error(error);
         }
     }
 
