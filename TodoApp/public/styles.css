@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #f9fafb;
+  color: #1f2937;
+  min-height: 100vh;
+}
+
+nav {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0.75rem 2rem;
+}
+nav a {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 500;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+
+main,
+body > *:not(nav) {
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.todoList {
+  list-style: none;
+}
+.todoList li {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.todoList li a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: #1f2937;
+  text-decoration: none;
+}
+.todoList li a:hover {
+  background: #f9fafb;
+  border-radius: 8px;
+}
+.todoList li input[type=checkbox] {
+  accent-color: #4f46e5;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.detail {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.detail p {
+  margin-bottom: 0.75rem;
+  color: #6b7280;
+}
+.detail p strong {
+  color: #1f2937;
+}
+.detail a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #4f46e5;
+  text-decoration: none;
+}
+.detail a:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=styles.css.map */
