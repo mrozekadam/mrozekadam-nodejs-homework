@@ -5,6 +5,7 @@ import IndexView from "./src/views/IndexView";
 import DetailView from "./src/views/DetailView";
 import NotFoundView from "./src/views/NotFoundView";
 import { TodoRepository } from "./src/repository/todo.repository";
+import { Todo } from "./src/db/schema";
 
 const app = new Hono();
 const port = 6530;
@@ -16,10 +17,8 @@ app.get("/", (c) => {
 });
 
 app.post("/api/create", async (c) => {
-  const body = await c.req.parseBody();
-  const title = body.title as string;
-  const description = body.description as string;
-  await todoRepository.createTodo(title, description);
+  const { title, description } = await c.req.parseBody();
+  todoRepository.createTodo(title as string, description as string);
 
   return redirectBack(c, "/");
 });
@@ -35,7 +34,7 @@ app.get("/detail/:id", (c) => {
   const id = Number(c.req.param("id"));
   const todo = todoRepository.getById(id);
 
-  return c.html(<DetailView title="TodoApp" todo={todo} />);
+  return c.html(<DetailView title="TodoApp" todo={todo as Todo} />);
 });
 
 app.use("/*", serveStatic({ root: "./public" }));

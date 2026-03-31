@@ -21,14 +21,14 @@ export class BaseRepository<T extends TableWithId, TSelect extends Record<string
     }
 
     insert(data: TInsert) {
-        return this.db.insert(this.table).values(data).returning();
+        return this.db.insert(this.table).values(data).returning().all();
     }
 
     update(id: number, data: Partial<TInsert>) {
-        return this.db.update(this.table).set(data).where(eq(this.table.id, id)).returning();
+        return this.db.update(this.table).set(data).where(eq(this.table.id, id)).returning().all();
     }
 
     delete(id: number) {
-        return this.db.delete(this.table).where(eq(this.table.id, id)).returning();
+        return this.db.delete(this.table).where(eq(this.table.id, id)).returning().all();
     }
 }
