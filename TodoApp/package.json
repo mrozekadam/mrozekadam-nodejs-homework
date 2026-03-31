@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "start": "tsx index.tsx",
+    "dev": "tsx watch index.tsx",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.14.3",
+    "hono": "^4.7.11"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.3"
+  }
+}
