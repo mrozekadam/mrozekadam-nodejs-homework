@@ -12,6 +12,7 @@ const DetailView: FC<Props> = ({ title, todo }) => (
     <h1>{todo.title}</h1>
     <div class="detail">
       <p><strong>Status:</strong> {todo.completed ? "Completed" : "Pending"}</p>
+      <p><strong>Priority:</strong> {todo.priority}</p>
       <p><strong>Created at:</strong> {todo.createdAt.toLocaleString()}</p>
       <a href="/">Back to list</a>
     </div>
