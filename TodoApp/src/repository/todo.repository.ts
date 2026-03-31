@@ -5,4 +5,13 @@ export class TodoRepository extends BaseRepository<typeof todos> {
     constructor() {
         super(todos);
     }
+
+    async toggleTodo(id: number) {
+        const todo = await this.getById(id);
+        if (!todo) {
+            throw new Error("Todo not found");
+        }
+        await this.update(id, { completed: !todo.completed });
+        return await this.getById(id);
+    }
 }

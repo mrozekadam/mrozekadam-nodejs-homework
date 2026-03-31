@@ -14,6 +14,13 @@ app.get("/", (c) => {
   return c.html(<IndexView title="TodoApp" todos={todos} />);
 });
 
+app.get("/api/toggle/:id", async (c) => {
+  const id = Number(c.req.param("id"));
+  await todoRepository.toggleTodo(id);
+
+  return c.redirect("/");
+});
+
 app.use("/*", serveStatic({ root: "./public" }));
 
 app.notFound((c) => c.html(<NotFoundView />, 404));
