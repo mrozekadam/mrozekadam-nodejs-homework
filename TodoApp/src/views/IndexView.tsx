@@ -10,6 +10,11 @@ type Props = {
 const IndexView: FC<Props> = ({ title, todos }) => (
   <Layout title={title}>
     <h1>Todos</h1>
+    <form action="/api/create" method="post" class="newTodoForm">
+      <input type="text" name="title" placeholder="Title" />
+      <input type="text" name="description" placeholder="Description" />
+      <button type="submit">Create</button>
+    </form>
     <ul class="todoList">
       {todos.map((todo) => (
         <li key={todo.id}>

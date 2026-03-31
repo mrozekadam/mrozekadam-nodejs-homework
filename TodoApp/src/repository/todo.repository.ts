@@ -1,4 +1,4 @@
-import { todos } from "../db/schema";
+import { Todo, todos } from "../db/schema";
 import { BaseRepository } from "./base.repository";
 
 export class TodoRepository extends BaseRepository<typeof todos> {
@@ -13,5 +13,13 @@ export class TodoRepository extends BaseRepository<typeof todos> {
         }
         await this.update(id, { completed: !todo.completed });
         return await this.getById(id);
+    }
+
+    async createTodo(title: string, description: string) {
+        await this.insert({
+            title,
+            description,
+            completed: false,
+        });
     }
 }

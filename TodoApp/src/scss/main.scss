@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $primary: #4f46e5;
 $text: #1f2937;
 $muted: #6b7280;
@@ -31,6 +33,33 @@ nav {
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+}
+
+.newTodoForm {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+
+  input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid $border;
+    border-radius: $radius;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: $radius;
+    background: $primary;
+    color: $card-bg;
+    cursor: pointer;
+
+    &:hover {
+      background: darken($primary, 10%);
     }
   }
 }

@@ -15,6 +15,15 @@ app.get("/", (c) => {
   return c.html(<IndexView title="TodoApp" todos={todos} />);
 });
 
+app.post("/api/create", async (c) => {
+  const body = await c.req.parseBody();
+  const title = body.title as string;
+  const description = body.description as string;
+  await todoRepository.createTodo(title, description);
+
+  return redirectBack(c, "/");
+});
+
 app.get("/api/toggle/:id", async (c) => {
   const id = Number(c.req.param("id"));
   await todoRepository.toggleTodo(id);

@@ -8,6 +8,13 @@
       "when": 1774982139141,
       "tag": "0000_curly_toad",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1774986987797,
+      "tag": "0001_confused_blur",
+      "breakpoints": true
     }
   ]
 }
