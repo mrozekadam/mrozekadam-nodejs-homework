@@ -1,4 +1,4 @@
-import { Todo, todos } from "../db/schema";
+import { todos } from "../db/schema";
 import { BaseRepository } from "./base.repository";
 
 export class TodoRepository extends BaseRepository<typeof todos> {
@@ -24,6 +24,7 @@ export class TodoRepository extends BaseRepository<typeof todos> {
     }
 
     updateTodo(id: number, title: string, description: string, priority: string) {
+        console.log(id, title, description, priority);
         this.update(id, {
             title,
             description,
