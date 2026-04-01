@@ -6,26 +6,25 @@ export class TodoRepository extends BaseRepository<typeof todos> {
         super(todos);
     }
 
-    toggleTodo(id: number) {
-        const todo = this.getById(id);
+    async toggleTodo(id: number) {
+        const todo = await this.getById(id);
         if (!todo) {
             throw new Error("Todo not found");
         }
-        this.update(id, { completed: !todo.completed });
+        await this.update(id, { completed: !todo.completed });
         return this.getById(id);
     }
 
-    createTodo(title: string, description: string) {
-        this.insert({
+    async createTodo(title: string, description: string) {
+        await this.insert({
             title,
             description,
             completed: false,
         });
     }
 
-    updateTodo(id: number, title: string, description: string, priority: string) {
-        console.log(id, title, description, priority);
-        this.update(id, {
+    async updateTodo(id: number, title: string, description: string, priority: string) {
+        await this.update(id, {
             title,
             description,
             priority: priority as "low" | "medium" | "high",

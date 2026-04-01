@@ -43,7 +43,9 @@ const DetailView: FC<Props> = ({ title, todo }) => (
             Priority
             <select id="priority" name="priority">
               {Object.values(PriorityEnum).map((priority) => (
-                <option value={priority}>{priority.toUpperCase()}</option>
+                <option value={priority} selected={todo.priority === priority}>
+                  {priority.toUpperCase()}
+                </option>
               ))}
             </select>
           </label>

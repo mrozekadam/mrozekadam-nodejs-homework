@@ -12,23 +12,23 @@ export class BaseRepository<T extends TableWithId, TSelect extends Record<string
         this.table = table;
     }
 
-    getAll(): TSelect[] {
+    async getAll(): Promise<TSelect[]> {
         return this.db.select().from(this.table).all() as TSelect[];
     }
 
-    getById(id: number): TSelect | undefined {
+    async getById(id: number): Promise<TSelect | undefined> {
         return this.db.select().from(this.table).where(eq(this.table.id, id)).get() as TSelect | undefined;
     }
 
-    insert(data: TInsert) {
+    async insert(data: TInsert) {
         return this.db.insert(this.table).values(data).returning().all();
     }
 
-    update(id: number, data: Partial<TInsert>) {
+    async update(id: number, data: Partial<TInsert>) {
         return this.db.update(this.table).set(data).where(eq(this.table.id, id)).returning().all();
     }
 
-    delete(id: number) {
+    async delete(id: number) {
         return this.db.delete(this.table).where(eq(this.table.id, id)).returning().all();
     }
 }

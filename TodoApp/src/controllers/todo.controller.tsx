@@ -7,8 +7,8 @@ import { Todo } from "../db/schema";
 const todoController = new Hono();
 const todoRepository = new TodoRepository();
 
-todoController.get("/", (c) => {
-  const todos = todoRepository.getAll();
+todoController.get("/", async (c) => {
+  const todos = await todoRepository.getAll();
   return c.html(<IndexView title="TodoApp" todos={todos} />);
 });
 
@@ -28,14 +28,19 @@ todoController.get("/toggle/:id", async (c) => {
 
 todoController.post("/update", async (c) => {
   const { id, title, description, priority } = await c.req.parseBody();
-  todoRepository.updateTodo(Number(id), title as string, description as string, priority as string);
+  todoRepository.updateTodo(
+    Number(id),
+    title as string,
+    description as string,
+    priority as string,
+  );
 
   return redirectBack(c, "/todo/");
 });
 
-todoController.get("/detail/:id", (c) => {
+todoController.get("/detail/:id", async (c) => {
   const id = Number(c.req.param("id"));
-  const todo = todoRepository.getById(id);
+  const todo = await todoRepository.getById(id);
 
   return c.html(<DetailView title="TodoApp" todo={todo as Todo} />);
 });
