@@ -112,29 +112,82 @@ h1 {
   }
 }
 
-.detail {
-  background: $card-bg;
-  border: 1px solid $border;
-  border-radius: $radius;
-  padding: 1.5rem;
+.todo-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
-  p {
-    margin-bottom: 0.75rem;
-    color: $muted;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: $card-bg;
+    border: 1px solid $border;
+    border-radius: $radius;
+    padding: 1.5rem;
 
-    strong {
-      color: $text;
+    p {
+      margin-bottom: 0.75rem;
+      color: $muted;
+
+      strong {
+        color: $text;
+      }
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: $primary;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
-  a {
-    display: inline-block;
-    margin-top: 1rem;
-    color: $primary;
-    text-decoration: none;
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
-    &:hover {
-      text-decoration: underline;
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    input {
+      padding: 0.5rem;
+      border: 1px solid $border;
+      border-radius: $radius;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: $radius;
+      background: $primary;
+      color: $card-bg;
+      cursor: pointer;
+
+      &:hover {
+        background: darken($primary, 10%);
+      }
+    }
+
+    select {
+      padding: 0.5rem;
+      border: 1px solid $border;
+      border-radius: $radius;
+    }
+
+    &__actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: 0.5rem;
     }
   }
 }

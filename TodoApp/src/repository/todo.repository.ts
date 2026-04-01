@@ -22,4 +22,12 @@ export class TodoRepository extends BaseRepository<typeof todos> {
             completed: false,
         });
     }
+
+    updateTodo(id: number, title: string, description: string, priority: string) {
+        this.update(id, {
+            title,
+            description,
+            priority: priority as "low" | "medium" | "high",
+        });
+    }
 }

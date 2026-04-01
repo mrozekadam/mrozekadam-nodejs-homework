@@ -30,6 +30,13 @@ app.get("/api/toggle/:id", async (c) => {
   return redirectBack(c, "/");
 });
 
+app.post("/api/update", async (c) => {
+  const { id, title, description, priority } = await c.req.parseBody();
+  todoRepository.updateTodo(Number(id), title as string, description as string, priority as string);
+
+  return redirectBack(c, "/");
+});
+
 app.get("/detail/:id", (c) => {
   const id = Number(c.req.param("id"));
   const todo = todoRepository.getById(id);
