@@ -24,7 +24,7 @@ const DetailView: FC<Props> = ({ title, todo }) => (
         <p>
           <strong>Created at:</strong> {todo.createdAt.toLocaleString()}
         </p>
-        <form action="/api/update" method="post" class="todo-detail__form">
+        <form action="/todo/update" method="post" class="todo-detail__form">
           <input type="hidden" name="id" value={todo.id} />
           <label htmlFor="title">
             Title
@@ -52,7 +52,7 @@ const DetailView: FC<Props> = ({ title, todo }) => (
           </div>
         </form>
       </div>
-      <a href="/">Back to list</a>
+      <a href="/todo">Back to list</a>
     </div>
   </Layout>
 );

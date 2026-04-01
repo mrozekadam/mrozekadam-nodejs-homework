@@ -10,7 +10,7 @@ type Props = {
 const IndexView: FC<Props> = ({ title, todos }) => (
   <Layout title={title}>
     <h1>Todos</h1>
-    <form action="/api/create" method="post" class="newTodoForm">
+    <form action="/todo/create" method="post" class="newTodoForm">
       <input type="text" name="title" placeholder="Title" />
       <input type="text" name="description" placeholder="Description" />
       <button type="submit">Create</button>
@@ -18,11 +18,11 @@ const IndexView: FC<Props> = ({ title, todos }) => (
     <ul class="todoList">
       {todos.map((todo) => (
         <li key={todo.id}>
-          <a href={`/api/toggle/${todo.id}`}>
+          <a href={`/todo/toggle/${todo.id}`}>
             <input type="checkbox" checked={todo.completed} />
             <span>{todo.title}</span>
           </a>
-          <a href={`/detail/${todo.id}`}>Detail</a>
+          <a href={`/todo/detail/${todo.id}`}>Detail</a>
         </li>
       ))}
     </ul>
